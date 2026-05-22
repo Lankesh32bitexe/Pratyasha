@@ -17,6 +17,38 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Lock Screen Overlay (Locked until May 23, 2026 00:00:00) -->
+  <div id="lock-screen" class="lock-screen-overlay">
+    <div class="lock-screen-content glass">
+      <div class="lock-icon">🔒✨</div>
+      <h2>A Magical Surprise is Waiting...</h2>
+      <p class="lock-subtitle">We have crafted a beautiful tribute for our beloved <strong>Pratyasha</strong>! The gates will swing open automatically on her special day.</p>
+      
+      <!-- Glass Countdown Card inside Lock Screen -->
+      <div class="lock-countdown glass">
+        <div class="lock-timer">
+          <div class="lock-timer-item"><span id="lock-hours">00</span><label>Hours</label></div>
+          <div class="lock-timer-divider">:</div>
+          <div class="lock-timer-item"><span id="lock-minutes">00</span><label>Minutes</label></div>
+          <div class="lock-timer-divider">:</div>
+          <div class="lock-timer-item"><span id="lock-seconds">00</span><label>Seconds</label></div>
+        </div>
+      </div>
+      
+      <div class="lock-hint-card">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div>
+          <h4>Clue / Hint for the Family Group:</h4>
+          <p>The celebration begins automatically at the exact stroke of midnight on May 23rd! 🎈 Keep this link handy—you will get to write sweet wishes, view beautiful polaroid memories, and pop floating balloons to unlock a secret surprise card! 🌸✨</p>
+        </div>
+      </div>
+      
+      <div class="lock-footer">
+        <p>Made with love by the family ❤️</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Custom Background Canvas for Confetti & Stars -->
   <canvas id="effects-canvas"></canvas>
 

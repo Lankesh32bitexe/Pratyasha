@@ -1005,7 +1005,7 @@ if (clearBoardBtn) {
 }
 
 /* ==========================================================================
-   MAGICAL COUNTDOWN TIMER
+   MAGICAL COUNTDOWN TIMER & LOCK SCREEN
    ========================================================================== */
 const targetDate = new Date('May 23, 2026 00:00:00').getTime();
 const countdownContainer = document.getElementById('countdown-container');
@@ -1014,11 +1014,30 @@ const hoursSpan = document.getElementById('hours');
 const minutesSpan = document.getElementById('minutes');
 const secondsSpan = document.getElementById('seconds');
 
+// Lock Screen Elements
+const lockScreen = document.getElementById('lock-screen');
+const lockHoursSpan = document.getElementById('lock-hours');
+const lockMinutesSpan = document.getElementById('lock-minutes');
+const lockSecondsSpan = document.getElementById('lock-seconds');
+
+let isLocked = false;
+
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate - now;
 
   if (distance < 0) {
+    // If the site was previously locked, trigger the unlock ceremony!
+    if (isLocked) {
+      isLocked = false;
+      unlockSite();
+    }
+    
+    if (lockScreen && lockScreen.classList.contains('active')) {
+      lockScreen.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
     if (countdownContainer) {
       countdownContainer.innerHTML = `
         <div class="countdown-label">🎉 IT'S HER SPECIAL DAY! 🎉</div>
@@ -1030,6 +1049,16 @@ function updateCountdown() {
     return;
   }
 
+  // If distance is >= 0, we must lock the site
+  if (!isLocked) {
+    isLocked = true;
+    if (lockScreen) {
+      lockScreen.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // Calculate standard days, hours, minutes, seconds for regular countdown
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -1039,6 +1068,33 @@ function updateCountdown() {
   if (hoursSpan) hoursSpan.innerText = hours.toString().padStart(2, '0');
   if (minutesSpan) minutesSpan.innerText = minutes.toString().padStart(2, '0');
   if (secondsSpan) secondsSpan.innerText = seconds.toString().padStart(2, '0');
+
+  // Calculate cumulative hours for the lock screen timer (e.g. 3 hours, 28 hours, etc.)
+  const totalHours = Math.floor(distance / (1000 * 60 * 60));
+  
+  if (lockHoursSpan) lockHoursSpan.innerText = totalHours.toString().padStart(2, '0');
+  if (lockMinutesSpan) lockMinutesSpan.innerText = minutes.toString().padStart(2, '0');
+  if (lockSecondsSpan) lockSecondsSpan.innerText = seconds.toString().padStart(2, '0');
+}
+
+function unlockSite() {
+  if (lockScreen) {
+    lockScreen.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  // Showcase double confetti!
+  createConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, 150);
+  setTimeout(() => createConfettiBurst(window.innerWidth / 4, window.innerHeight / 2, 80), 300);
+  setTimeout(() => createConfettiBurst((window.innerWidth * 3) / 4, window.innerHeight / 2, 80), 600);
+
+  // Play sweet audio welcome chime / fanfare if unmuted
+  if (!state.isMuted) {
+    playFanfare();
+    setTimeout(playFanfare, 450);
+  }
+  
+  showToast('🎉 The gates have opened! Welcome to Pratyasha\'s birthday celebration! 🎂🌸', 'success');
 }
 
 // Initialise and start interval
