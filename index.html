@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Pratyasha! ✨</title>
+  <!-- SEO Metadata -->
+  <meta name="description" content="A magical birthday tribute to our beloved Pratyasha. Celebrate her memories, see shared pictures, and leave a heartfelt wish.">
+  <meta name="theme-color" content="#b76e79">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Custom Background Canvas for Confetti & Stars -->
+  <canvas id="effects-canvas"></canvas>
+
+  <!-- Sound Toggle & Theme Mode Toggle floating controls -->
+  <div class="floating-controls">
+    <button id="music-toggle" class="control-btn" aria-label="Play Sweet Chime Music" title="Play Sweet Chime Music">
+      <i class="fa-solid fa-music"></i>
+      <span class="equalizer-visualizer">
+        <span class="eq-bar eq-bar-1"></span>
+        <span class="eq-bar eq-bar-2"></span>
+        <span class="eq-bar eq-bar-3"></span>
+      </span>
+    </button>
+    <button id="theme-toggle" class="control-btn" aria-label="Toggle Dreamy Theme" title="Toggle Dreamy Theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <button id="share-btn" class="control-btn" aria-label="Share this page" title="Share">
+      <i class="fa-solid fa-share-nodes"></i>
+    </button>
+  </div>
+
+  <!-- Landing / Hero Section -->
+  <header class="hero-section" id="home">
+    <div class="bubble-container" id="bubble-container"></div>
+    <div class="hero-content">
+      <span class="hero-subtitle">May 23, 2026</span>
+      
+      <!-- Countdown Timer Block -->
+      <div id="countdown-container" class="countdown-container glass">
+        <div class="countdown-label">✨ COUNTDOWN TO HER SPECIAL DAY ✨</div>
+        <div class="countdown-timer">
+          <div class="countdown-item"><span id="days">00</span><label>Days</label></div>
+          <div class="countdown-divider">:</div>
+          <div class="countdown-item"><span id="hours">00</span><label>Hours</label></div>
+          <div class="countdown-divider">:</div>
+          <div class="countdown-item"><span id="minutes">00</span><label>Minutes</label></div>
+          <div class="countdown-divider">:</div>
+          <div class="countdown-item"><span id="seconds">00</span><label>Seconds</label></div>
+        </div>
+      </div>
+
+      <!-- Balloon Pop Tracker HUD -->
+      <div id="balloon-hud" class="balloon-hud glass">
+        <span class="hud-label"><i class="fa-solid fa-circle-play"></i> Tap the floating balloons to unlock a surprise! 🎈</span>
+        <div class="hud-progress-wrapper">
+          <div class="hud-progress-bar">
+            <div id="hud-progress" class="hud-progress" style="width: 0%"></div>
+          </div>
+          <span id="hud-counter" class="hud-counter">0/5</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title">Happy Birthday, <br><span class="highlight">Pratyasha!</span></h1>
+      <p class="hero-intro">To a sister who shines brighter than the stars, makes every ordinary day feel magical, and brings endless joy to our hearts. Today is all about celebrating the wonderful person you are.</p>
+      
+      <!-- Interactive CTA -->
+      <div class="hero-buttons">
+        <button id="celebrate-btn" class="btn btn-primary">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Celebrate!
+        </button>
+        <a href="#gallery" class="btn btn-secondary">
+          <i class="fa-solid fa-images"></i> View Memories
+        </a>
+      </div>
+      
+      <!-- Scrolling indicator -->
+      <div class="scroll-indicator">
+        <span>Scroll to Explore</span>
+        <i class="fa-solid fa-chevron-down animate-bounce"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Heartfelt Message & Letter Section -->
+  <section class="message-section" id="tribute">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">A Tribute</span>
+        <h2>A Heartfelt Note For You</h2>
+      </div>
+      <div class="letter-card glass">
+        <div class="letter-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+        <div class="letter-content">
+          <p>Dear Pratyasha,</p>
+          <p>There are some people who make the world a warmer, kinder place just by being in it. You are, without a doubt, one of those rare souls.</p>
+          <p>Whether you're sharing a laugh, pursuing your dreams, or just being the supportive sister you've always been, you carry a unique grace and kindness that inspires everyone around you.</p>
+          <p>This website is a small token of our love—a collection of moments we've shared, pictures that bring back smiles, and wishes from people who cherish you. May this year bring you all the adventure, laughter, and peace you deserve.</p>
+          <p class="signature">With love and warmest wishes,<br><span class="handwritten">Your Family & Friends</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memory Polaroid Gallery -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Memory Lane</span>
+        <h2>Your Beautiful Moments</h2>
+        <p>A collection of smiles, travels, and quiet moments that make our story special.</p>
+      </div>
+
+      <!-- Polaroid Grid -->
+      <div class="polaroid-grid">
+        <!-- Card 1 -->
+        <div class="polaroid-card" data-index="0">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20250911-WA0023.jpg" alt="Memory 1" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Golden Days ✨</div>
+        </div>
+        <!-- Card 2 -->
+        <div class="polaroid-card" data-index="1">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0017.jpg" alt="Memory 2" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Chasing sunsets 🌅</div>
+        </div>
+        <!-- Card 3 -->
+        <div class="polaroid-card" data-index="2">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0018.jpg" alt="Memory 3" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Laughing together 🤍</div>
+        </div>
+        <!-- Card 4 -->
+        <div class="polaroid-card" data-index="3">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0022.jpg" alt="Memory 4" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Unforgettable moments 📸</div>
+        </div>
+        <!-- Card 5 -->
+        <div class="polaroid-card" data-index="4">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0026.jpg" alt="Memory 5" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Radiant smiles 🌸</div>
+        </div>
+        <!-- Card 6 -->
+        <div class="polaroid-card" data-index="5">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0027.jpg" alt="Memory 6" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Adventure time 🎒</div>
+        </div>
+        <!-- Card 7 -->
+        <div class="polaroid-card" data-index="6">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0028.jpg" alt="Memory 7" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Cozy little chats ☕</div>
+        </div>
+        <!-- Card 8 -->
+        <div class="polaroid-card" data-index="7">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0044.jpg" alt="Memory 8" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Magical vibes ✨</div>
+        </div>
+        <!-- Card 9 -->
+        <div class="polaroid-card" data-index="8">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0048.jpg" alt="Memory 9" loading="lazy">
+          </div>
+          <div class="polaroid-caption">True joy 🌟</div>
+        </div>
+        <!-- Card 10 -->
+        <div class="polaroid-card" data-index="9">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0057.jpg" alt="Memory 10" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Under the open sky ☁️</div>
+        </div>
+        <!-- Card 11 -->
+        <div class="polaroid-card" data-index="10">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260520-WA0060.jpg" alt="Memory 11" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Happy thoughts 🧸</div>
+        </div>
+        <!-- Card 12 -->
+        <div class="polaroid-card" data-index="11">
+          <div class="polaroid-img-wrapper">
+            <img src="Pictures/IMG-20260522-WA0004.jpg" alt="Memory 12" loading="lazy">
+          </div>
+          <div class="polaroid-caption">Here's to you! 🥂</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Zoomed view">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Interactive Wishing Well / Guestbook -->
+  <section class="guestbook-section" id="wishes">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Wishing Well</span>
+        <h2>Leave a Heartfelt Wish</h2>
+        <p>Send Pratyasha a sweet birthday message, select an avatar, and pin it to her wall!</p>
+      </div>
+
+      <div class="guestbook-container">
+        <!-- Guestbook Form -->
+        <div class="guestbook-form-card glass">
+          <h3>Write a Message</h3>
+          <form id="wish-form">
+            <div class="form-group">
+              <label for="guest-name">Your Name</label>
+              <input type="text" id="guest-name" required placeholder="e.g., Brother, Sister, aunty">
+            </div>
+            
+            <div class="form-group">
+              <label>Choose a Greeting Icon</label>
+              <div class="avatar-selector">
+                <input type="radio" name="avatar" value="🎂" id="av1" checked>
+                <label for="av1">🎂</label>
+                
+                <input type="radio" name="avatar" value="🎈" id="av2">
+                <label for="av2">🎈</label>
+                
+                <input type="radio" name="avatar" value="✨" id="av3">
+                <label for="av3">✨</label>
+                
+                <input type="radio" name="avatar" value="💖" id="av4">
+                <label for="av4">💖</label>
+                
+                <input type="radio" name="avatar" value="🧁" id="av5">
+                <label for="av5">🧁</label>
+                
+                <input type="radio" name="avatar" value="🎁" id="av6">
+                <label for="av6">🎁</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="guest-message">Your Wish</label>
+              <textarea id="guest-message" required rows="4" placeholder="Type your loving message here..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              Send Your Wish <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Wish Wall Board -->
+        <div class="wish-board-wrapper">
+          <div class="wish-board-header">
+            <h3>Wishes Wall <span>✨</span></h3>
+            <button id="clear-board" class="btn-clear" title="Reset Board to Default Wishes"><i class="fa-solid fa-rotate-left"></i> Reset Board</button>
+          </div>
+          <div class="wish-board" id="wish-board">
+            <!-- Wishes will be injected dynamically here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Quiz or Milestones Section (Fun & Engaging) -->
+  <section class="fun-section" id="fun">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Interactive</span>
+        <h2>Why Pratyasha is Special</h2>
+        <p>A few reminders of the unique spark she brings into our lives.</p>
+      </div>
+
+      <div class="fun-grid">
+        <div class="fun-card glass">
+          <div class="fun-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
+          <h4>Infectious Laugh</h4>
+          <p>Her giggles can light up the absolute dimmest rooms and lift any spirit.</p>
+        </div>
+        <div class="fun-card glass">
+          <div class="fun-icon"><i class="fa-solid fa-mug-hot"></i></div>
+          <h4>Coffee & Books Enthusiast</h4>
+          <p>Can usually be found cozied up with a piping warm drink and a captivating novel.</p>
+        </div>
+        <div class="fun-card glass">
+          <div class="fun-icon"><i class="fa-solid fa-compass"></i></div>
+          <h4>Curious Wanderer</h4>
+          <p>Always seeking new adventures, capturing gorgeous sights, and ready for exploration.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Quiz: How well do you know Pratyasha? -->
+      <div class="quiz-container glass" id="quiz-container">
+        <div class="quiz-header">
+          <h3>Interactive Quiz: How Well Do You Know Pratyasha? 🧩</h3>
+          <p>Answer these cute, warm questions to see if you are a true Pratyasha expert!</p>
+        </div>
+        
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress" id="quiz-progress" style="width: 0%"></div>
+        </div>
+
+        <div class="quiz-card-wrapper">
+          <!-- Question 1 -->
+          <div class="quiz-question-card active" data-q="0">
+            <div class="quiz-question">1. What is Pratyasha's absolute favorite way to spend a cozy afternoon? ☕</div>
+            <div class="quiz-options">
+              <button class="btn quiz-opt-btn" data-opt="0">Sleeping all day long 😴</button>
+              <button class="btn quiz-opt-btn" data-opt="1">Cozied up with a great book and hot coffee ☕📖</button>
+              <button class="btn quiz-opt-btn" data-opt="2">Running a fast outdoor marathon 🏃‍♀️</button>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz-question-card" data-q="1">
+            <div class="quiz-question">2. Which signature trait of hers lights up the absolute dimmest rooms? 😂</div>
+            <div class="quiz-options">
+              <button class="btn quiz-opt-btn" data-opt="0">Her infectious laugh and glowing smile 😂🌟</button>
+              <button class="btn quiz-opt-btn" data-opt="1">Singing loudly in an empty room 🎤</button>
+              <button class="btn quiz-opt-btn" data-opt="2">Her hyperactive cooking skills 🍳</button>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz-question-card" data-q="2">
+            <div class="quiz-question">3. What is she most likely to capture on her camera while traveling? 🌅</div>
+            <div class="quiz-options">
+              <button class="btn quiz-opt-btn" data-opt="0">Silly, random selfies 🤪</button>
+              <button class="btn quiz-opt-btn" data-opt="1">Beautiful landscapes and warm sunsets 🌅🎒</button>
+              <button class="btn quiz-opt-btn" data-opt="2">Pictures of random street signs 🚧</button>
+            </div>
+          </div>
+
+          <!-- Quiz Completion Card -->
+          <div class="quiz-completion-card" id="quiz-success-card">
+            <div class="quiz-success-icon">✨🏆✨</div>
+            <h4>You're a True Pratyasha Expert!</h4>
+            <p>You got all questions right! You know her beautifully. She is indeed a sweet, book-loving, sunset-chasing star! 🌟</p>
+            <button class="btn btn-primary" id="quiz-restart-btn">Play Again <i class="fa-solid fa-rotate-left"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <p class="made-with">Made with love, laughter, and coding magic for Pratyasha.</p>
+      <p class="copyright">&copy; 2026. Happy Birthday, Pratyasha! 🌸</p>
+    </div>
+  </footer>
+
+  <!-- Custom Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Custom Confirmation Modal -->
+  <div id="confirm-modal" class="confirm-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="confirm-modal-content glass">
+      <div class="confirm-modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h3>Are you sure?</h3>
+      <p id="confirm-modal-msg">Do you really want to perform this action? This cannot be undone.</p>
+      <div class="confirm-modal-buttons">
+        <button id="confirm-cancel" class="btn btn-secondary">Cancel</button>
+        <button id="confirm-ok" class="btn btn-primary">Yes, Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secret Surprise Card Modal -->
+  <div id="surprise-modal" class="surprise-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="surprise-modal-content glass">
+      <button class="surprise-close" id="surprise-close" aria-label="Close surprise modal">&times;</button>
+      <div class="surprise-header-icon">💝</div>
+      <h3>A Magical Message For You ✨</h3>
+      <div class="surprise-card-inner">
+        <p>Dear Pratyasha,</p>
+        <p>You have unlocked the secret vault of sibling love and blessings! 🔓💖</p>
+        <p>They say that as we grow older, we begin to realize what truly matters. Having a sister like you is one of those precious certainties. You bring a light, a laughter, and an absolute warmth that completes our lives.</p>
+        <p>May this birthday be the start of a year filled with wonderful coincidences, brilliant discoveries, quiet moments of absolute joy, and dreams that unfold beautifully just as you imagine.</p>
+        <p class="surprise-signature">Always by your side,<br><span>Your Loving Brother & Family 🌸</span></p>
+      </div>
+      <div class="surprise-footer-btn">
+        <button id="surprise-celebrate" class="btn btn-primary">
+          <i class="fa-solid fa-gift"></i> Double Confetti!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script files -->
+  <script src="script.js"></script>
+</body>
+</html>
